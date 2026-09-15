@@ -11,6 +11,9 @@ export default mergeConfig(
       root: fileURLToPath(new URL('./', import.meta.url)),
       coverage: {
         provider: 'istanbul',
+  	all: true,
+  	include: ['src/**/*.{vue,ts,js}'],
+  	reporter: ['text', 'lcov'],
       },
     },
   }),
