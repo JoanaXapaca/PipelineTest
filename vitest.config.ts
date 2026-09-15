@@ -12,3 +12,7 @@ export default mergeConfig(
     },
   }),
 )
+coverage: {
+  provider: 'v8',
+  experimentalAstAwareRemapping: true,  // Prepara para o Vitest v4
+}
