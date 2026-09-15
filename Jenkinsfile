@@ -36,6 +36,17 @@ pipeline {
             }
         }
 
+        stage('SonarQube'){
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    bat 'npx sonar-scanner'
+                }
+                timeout(time: 5, unit:'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 bat 'npm run build'
