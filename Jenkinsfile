@@ -32,7 +32,7 @@ pipeline {
 
         stage('Testes Unitários') {
             steps {
-                bat 'npm run test:unit -- --run'
+                bat 'npm run test:unit'
             }
         }
 
