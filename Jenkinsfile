@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS-20'
+        nodejs 'NodeJS 26.8.2'
     }
 
     stages {
@@ -32,7 +32,18 @@ pipeline {
 
         stage('Testes Unitários') {
             steps {
-                bat 'npm run test:unit -- --run'
+                bat 'npm run test:unit'
+            }
+        }
+
+        stage('SonarQube'){
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    bat 'npx sonar-scanner'
+                }
+                timeout(time: 5, unit:'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
 
