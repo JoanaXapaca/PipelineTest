@@ -39,11 +39,11 @@ pipeline {
         stage('SonarQube'){
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    bat 'npx sonar-scanner'
+                    bat 'npx sonar-scanner -Dsonar.qualitygate.wait=true'
                 }
-                timeout(time: 5, unit:'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
+                //timeout(time: 5, unit:'MINUTES') {
+                    //waitForQualityGate abortPipeline: true
+                //}
             }
         }
 
