@@ -27,14 +27,13 @@ Instalação:
 npm install --legacy-peer-deps
 
 Comandos:
-
-Comando	O que faz
 npm run dev	Servidor de desenvolvimento
 npm run build	Build de produção
 npm run preview	Pré-visualiza o build
 npm run lint	Lint (Oxlint + ESLint)
 npm run type-check	Valida os tipos TypeScript
 npm run test:unit	Testes com cobertura
+
 Antes de fazer push, correr:
 npm run lint
 npm run type-check
@@ -43,32 +42,29 @@ npm run build
 
 Interpretar resultados
 Jenkins:
-
 Verde: pipeline passou
-
 Vermelho: algum stage falhou; ver o Console Output
 
 Artefactos: dist/ e reports/ arquivados em cada build
 
 SonarQube:
-
 Dashboard: http://localhost:9000/dashboard?id=pipeline-test
-
 Quality Gate tem de estar Passed
 
-Coverage é gerado a partir de coverage/lcov.info
+Coverage é criado a partir de coverage/lcov.info
 
-Stack
-Camada	Tecnologia
-Framework	Vue 3
-Linguagem	TypeScript
-Build	Vite
-Testes	Vitest + Istanbul
-Lint	Oxlint + ESLint
-Type-check	vue-tsc
+
+Camada	Tecnologia:
+Framework -	Vue 3
+Linguagem -	TypeScript
+Build	- Vite
+Testes	- Vitest + Istanbul
+Lint	- Oxlint + ESLint
+Type-check	- vue-tsc
 CI/CD	Jenkins
-Análise estática	SonarQube
-Estrutura
+Análise estática	- SonarQube
+
+Estrutura:
 pipeline-test/
 ├── Jenkinsfile
 ├── sonar-project.properties
@@ -81,24 +77,15 @@ pipeline-test/
 │   ├── main.ts
 │   └── __tests__/
 │       └── App.spec.ts
-├── coverage/     (gerado, não versionado)
-├── dist/         (gerado, não versionado)
-└── reports/      (gerado, não versionado)
-Notas
+├── coverage/
+├── dist/     
+└── reports/
+
+Notas:
 Usar --legacy-peer-deps por causa de um conflito entre oxlint e eslint-plugin-oxlint.
-
 O provider de cobertura é Istanbul (o v8 tem um bug conhecido com ficheiros Vue que reporta 0%).
-
-Em localhost, o SonarQube não consegue enviar webhooks. Por isso usa-se -Dsonar.qualitygate.wait=true, que faz polling direto.
-
+Em localhost, o SonarQube não consegue enviar webhooks. Por isso usa-se sonar.qualitygate.wait=true, que faz polling direto.
 
 Guarda o ficheiro.
-
 ---
-
 ## 3. Commit e push
-
-```powershell
-git add src\__tests__\App.spec.ts README.md
-git commit -m "Add real tests and simplified README"
-git push
