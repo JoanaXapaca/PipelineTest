@@ -89,3 +89,4 @@ Em localhost, o SonarQube não consegue enviar webhooks. Por isso usa-se sonar.q
 Guarda o ficheiro.
 ---
 ## 3. Commit e push
+<!-- teste trigger -->
