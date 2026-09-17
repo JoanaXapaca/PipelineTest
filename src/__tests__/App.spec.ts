@@ -8,26 +8,24 @@ describe('App', () => {
     expect(wrapper.exists()).toBe(true)
   })
 
-  it('contains a heading', () => {
-    const wrapper = mount(App)
-    expect(wrapper.find('h1').exists()).toBe(true)
-  })
-
-  it('renders the heading text', () => {
+  it('renders the heading', () => {
     const wrapper = mount(App)
     const heading = wrapper.find('h1')
-    expect(heading.text()).toBeTruthy()
-    expect(heading.text().length).toBeGreaterThan(0)
+    expect(heading.exists()).toBe(true)
+    expect(heading.text()).toBe('You did it!')
   })
 
-  it('has at least one link', () => {
+  it('renders the paragraph', () => {
     const wrapper = mount(App)
-    const links = wrapper.findAll('a')
-    expect(links.length).toBeGreaterThan(0)
+    const paragraph = wrapper.find('p')
+    expect(paragraph.exists()).toBe(true)
+    expect(paragraph.text().length).toBeGreaterThan(0)
   })
 
-  it('renders the wrapper element', () => {
+  it('has a link to vuejs.org', () => {
     const wrapper = mount(App)
-    expect(wrapper.find('main').exists()).toBe(true)
+    const link = wrapper.find('a')
+    expect(link.exists()).toBe(true)
+    expect(link.attributes('href')).toBe('https://vuejs.org/')
   })
 })

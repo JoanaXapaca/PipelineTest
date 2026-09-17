@@ -1,30 +1,104 @@
-# Pipeline Test — Projeto Vue
+# Pipeline Test
 
-Projeto de demonstração da pipeline CI/CD da empresa, usado como base para replicar noutras tecnologias (Kotlin, Go, Delphi).
+Projeto Vue de demonstração da pipeline CI/CD, usado como base para replicar noutras tecnologias.
 
-##  Pipeline CI/CD
+## Pipeline
 
-A pipeline é executada no Jenkins e é composta pelos seguintes stages:
+Executada no Jenkins, com os seguintes stages:
 
-1. **Checkout** — clona o repositório Git
-2. **Install** — instala as dependências (`npm install --legacy-peer-deps`)
-3. **Lint** — corre o Oxlint e o ESLint
-4. **Type-check** — valida os tipos TypeScript (`vue-tsc`)
-5. **Testes Unitários** — corre os testes com Vitest e gera cobertura com Istanbul
-6. **SonarQube** — análise estática + Quality Gate
-7. **Build** — gera os artefactos finais (`vite build`)
-8. **Post Actions** — arquiva os artefactos
+1. Checkout - clona o repositório Git
+2. Install - `npm install --legacy-peer-deps`
+3. Lint - `npm run lint` (Oxlint + ESLint)
+4. Type-check - `npm run type-check` (vue-tsc)
+5. Testes Unitários - `npm run test:unit` (Vitest + Istanbul)
+6. SonarQube - `npx sonar-scanner -Dsonar.qualitygate.wait=true`
+7. Build - `npm run build` (Vite)
+8. Relatório de Auditoria - `python scripts/gerar_relatorio.py`
 
-Trigger: `Poll SCM` a cada 5 minutos. Cada `git push` na branch `main` dispara a pipeline automaticamente.
+Trigger: Poll SCM a cada 5 minutos. Cada push na branch `main` dispara a pipeline.
 
-## Como correr localmente
+## Correr localmente
 
-### Pré-requisitos
+Pré-requisitos: Node.js 22+ e npm 10+.
 
-- Node.js 22+ ou 24+
-- npm 10+
-
-### Instalação
+Instalação:
 
 ```bash
 npm install --legacy-peer-deps
+
+Comandos:
+
+Comando	O que faz
+npm run dev	Servidor de desenvolvimento
+npm run build	Build de produção
+npm run preview	Pré-visualiza o build
+npm run lint	Lint (Oxlint + ESLint)
+npm run type-check	Valida os tipos TypeScript
+npm run test:unit	Testes com cobertura
+Antes de fazer push, correr:
+npm run lint
+npm run type-check
+npm run test:unit
+npm run build
+
+Interpretar resultados
+Jenkins:
+
+Verde: pipeline passou
+
+Vermelho: algum stage falhou; ver o Console Output
+
+Artefactos: dist/ e reports/ arquivados em cada build
+
+SonarQube:
+
+Dashboard: http://localhost:9000/dashboard?id=pipeline-test
+
+Quality Gate tem de estar Passed
+
+Coverage é gerado a partir de coverage/lcov.info
+
+Stack
+Camada	Tecnologia
+Framework	Vue 3
+Linguagem	TypeScript
+Build	Vite
+Testes	Vitest + Istanbul
+Lint	Oxlint + ESLint
+Type-check	vue-tsc
+CI/CD	Jenkins
+Análise estática	SonarQube
+Estrutura
+pipeline-test/
+├── Jenkinsfile
+├── sonar-project.properties
+├── vitest.config.ts
+├── package.json
+├── scripts/
+│   └── gerar_relatorio.py
+├── src/
+│   ├── App.vue
+│   ├── main.ts
+│   └── __tests__/
+│       └── App.spec.ts
+├── coverage/     (gerado, não versionado)
+├── dist/         (gerado, não versionado)
+└── reports/      (gerado, não versionado)
+Notas
+Usar --legacy-peer-deps por causa de um conflito entre oxlint e eslint-plugin-oxlint.
+
+O provider de cobertura é Istanbul (o v8 tem um bug conhecido com ficheiros Vue que reporta 0%).
+
+Em localhost, o SonarQube não consegue enviar webhooks. Por isso usa-se -Dsonar.qualitygate.wait=true, que faz polling direto.
+
+
+Guarda o ficheiro.
+
+---
+
+## 3. Commit e push
+
+```powershell
+git add src\__tests__\App.spec.ts README.md
+git commit -m "Add real tests and simplified README"
+git push
