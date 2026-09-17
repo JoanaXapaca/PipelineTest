@@ -54,11 +54,12 @@ pipeline {
             steps {
                 bat '"C:/Users/jrego/AppData/Local/Python/pythoncore-3.14-64/python.exe" scripts/gerar_relatorio.py'
                 publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
                     reportDir: 'reports',
                     reportFiles: 'auditoria.html',
-                    reportName: 'Relatorio de Auditoria (ISO/FDA)',
-                    keepAll: true,
-                    alwaysLinkToLastBuild: true
+                    reportName: 'Relatorio de Auditoria (ISO/FDA)'
                 ])
             }
         }
