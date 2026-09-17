@@ -30,20 +30,17 @@ pipeline {
             }
         }
 
-        stage('Testes Unitários') {
+        stage('Testes Unitarios') {
             steps {
                 bat 'npm run test:unit'
             }
         }
 
-        stage('SonarQube'){
+        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     bat 'npx sonar-scanner -Dsonar.qualitygate.wait=true'
                 }
-                //timeout(time: 5, unit:'MINUTES') {
-                    //waitForQualityGate abortPipeline: true
-                //}
             }
         }
 
@@ -52,15 +49,28 @@ pipeline {
                 bat 'npm run build'
             }
         }
+
+        stage('Relatorio Auditoria') {
+            steps {
+                bat 'python scripts/gerar_relatorio.py'
+                publishHTML([
+                    reportDir: 'reports',
+                    reportFiles: 'auditoria.html',
+                    reportName: 'Relatorio de Auditoria (ISO/FDA)',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true
+                ])
+            }
+        }
     }
 
     post {
         success {
-            archiveArtifacts artifacts: 'dist/**', fingerprint: true
+            archiveArtifacts artifacts: 'dist/**, reports/**', fingerprint: true
             echo 'Build aprovado'
         }
         failure {
-            echo 'Build reprovado — ver logs'
+            echo 'Build reprovado - ver logs'
         }
     }
 }
