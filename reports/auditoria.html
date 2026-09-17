@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatorio de Auditoria - 0.0.0</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 40px; }
+    .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+    h2 { color: #34495e; margin-top: 30px; }
+    .meta { background: #ecf0f1; padding: 20px; border-radius: 6px; margin-bottom: 20px; }
+    .meta p { margin: 8px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th { background: #3498db; color: white; padding: 12px; text-align: left; }
+    td { padding: 10px; border-bottom: 1px solid #ddd; }
+    .ok { color: #27ae60; font-weight: bold; }
+    .warn { color: #f39c12; font-weight: bold; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #7f8c8d; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Relatorio de Auditoria de Qualidade</h1>
+
+    <div class="meta">
+      <p><strong>Projeto:</strong> pipeline-test</p>
+      <p><strong>Versao:</strong> 0.0.0</p>
+      <p><strong>Commit:</strong> 312dccb9cbff</p>
+      <p><strong>Mensagem:</strong> Add real tests and simplified README</p>
+      <p><strong>Data de geracao:</strong> 2026-09-17 11:07:46</p>
+      <p><strong>Executado por:</strong> Jenkins CI/CD</p>
+    </div>
+
+    <h2>1. Resultado da Pipeline</h2>
+    <table>
+      <tr><th>Stage</th><th>Resultado</th></tr>
+      <tr><td>Checkout</td><td class="ok">Sucesso</td></tr>
+      <tr><td>Install</td><td class="ok">Sucesso</td></tr>
+      <tr><td>Lint</td><td class="ok">0 warnings, 0 errors</td></tr>
+      <tr><td>Type-check</td><td class="ok">Sem erros</td></tr>
+      <tr><td>Testes Unitarios</td><td class="ok">4 testes passaram</td></tr>
+      <tr><td>SonarQube Quality Gate</td><td class="ok">Passed</td></tr>
+      <tr><td>Build</td><td class="ok">Artefactos gerados</td></tr>
+    </table>
+
+    <h2>2. Cobertura de Testes</h2>
+
+    <table>
+      <tr><th>Metrica</th><th>Coberto</th><th>Total</th><th>%</th></tr>
+      <tr><td>Linhas</td><td>0</td><td>1</td><td>0.0%</td></tr>
+      <tr><td>Branches</td><td>4</td><td>4</td><td>100.0%</td></tr>
+      <tr><td>Funcoes</td><td>0</td><td>0</td><td>0.0%</td></tr>
+    </table>
+
+    <h2>3. Analise Estatica (SonarQube)</h2>
+    <p>Quality Gate: <span class="ok">Passed</span></p>
+    <p>Dashboard completo: <a href="http://localhost:9000/dashboard?id=pipeline-test">http://localhost:9000/dashboard?id=pipeline-test</a></p>
+
+    <h2>4. Conformidade Regulamentar</h2>
+    <table>
+      <tr><th>Norma</th><th>Requisito</th><th>Estado</th></tr>
+      <tr><td>ISO 13485:2016</td><td>Rastreabilidade de testes e analise estatica</td><td class="ok">Documentado</td></tr>
+      <tr><td>FDA (SaMD)</td><td>Quality Gate obrigatorio antes do build</td><td class="ok">Aplicado</td></tr>
+      <tr><td>HIPAA</td><td>Controlo de acesso via VPN + credenciais</td><td class="ok">Aplicado</td></tr>
+      <tr><td>WCAG 2.1 AA</td><td>Acessibilidade (a validar em E2E)</td><td class="warn">Pendente</td></tr>
+      <tr><td>OWASP Top 10</td><td>Analise estatica via SonarQube</td><td class="ok">Aplicado</td></tr>
+    </table>
+
+    <div class="footer">
+      <p>Relatorio gerado automaticamente pela pipeline CI/CD do Jenkins.</p>
+      <p>Este documento e parte integrante do processo de validacao de software medico.</p>
+    </div>
+  </div>
+</body>
+</html>
