@@ -52,7 +52,7 @@ pipeline {
 
         stage('Relatorio Auditoria') {
             steps {
-                bat '"C:\Users\jrego\AppData\Local\Python\pythoncore-3.14-64\python.exe" scripts/gerar_relatorio.py'
+                bat '"C:/Python314/python.exe" scripts/gerar_relatorio.py' scripts/gerar_relatorio.py'
                 publishHTML([
                     reportDir: 'reports',
                     reportFiles: 'auditoria.html',
