@@ -1,54 +1,30 @@
-# pipeline-test
+# Pipeline Test — Projeto Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Projeto de demonstração da pipeline CI/CD da empresa, usado como base para replicar noutras tecnologias (Kotlin, Go, Delphi).
 
-## Recommended IDE Setup
+##  Pipeline CI/CD
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+A pipeline é executada no Jenkins e é composta pelos seguintes stages:
 
-## Recommended Browser Setup
+1. **Checkout** — clona o repositório Git
+2. **Install** — instala as dependências (`npm install --legacy-peer-deps`)
+3. **Lint** — corre o Oxlint e o ESLint
+4. **Type-check** — valida os tipos TypeScript (`vue-tsc`)
+5. **Testes Unitários** — corre os testes com Vitest e gera cobertura com Istanbul
+6. **SonarQube** — análise estática + Quality Gate
+7. **Build** — gera os artefactos finais (`vite build`)
+8. **Post Actions** — arquiva os artefactos
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Trigger: `Poll SCM` a cada 5 minutos. Cada `git push` na branch `main` dispara a pipeline automaticamente.
 
-## Type Support for `.vue` Imports in TS
+## Como correr localmente
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Pré-requisitos
 
-## Customize configuration
+- Node.js 22+ ou 24+
+- npm 10+
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Instalação
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+```bash
+npm install --legacy-peer-deps
