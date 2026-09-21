@@ -14,39 +14,39 @@ pipeline {
 
         stage('Install') {
             steps {
-                bat 'npm install --legacy-peer-deps'
+                bat 'make install'
             }
         }
 
         stage('Lint') {
             steps {
-                bat 'npm run lint'
+                bat 'make lint'
             }
         }
 
         stage('Type-check') {
             steps {
-                bat 'npm run type-check'
+                bat 'make type-check'
             }
         }
 
         stage('Testes Unitarios') {
             steps {
-                bat 'npm run test:unit'
+                bat 'make test'
             }
         }
 
         stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    bat 'npx sonar-scanner -Dsonar.qualitygate.wait=true'
+                    bat 'make sonar'
                 }
             }
         }
 
         stage('Build') {
             steps {
-                bat 'npm run build'
+                bat 'make build'
             }
         }
 
@@ -67,7 +67,7 @@ pipeline {
 
     post {
         success {
-            archiveArtifacts artifacts: 'dist/**, reports/**', fingerprint: true
+            archiveArtifacts artifacts: 'dist/**, bin/**, reports/**, coverage/**, coverage.out', fingerprint: true
             echo 'Build aprovado'
         }
         failure {
