@@ -37,10 +37,12 @@ pipeline {
         }
 
 	stage('SonarQube') {
-    		steps {
-        		withCredentials([string(credentialsId: 'sonar-token-web', variable: 'SONAR_TOKEN')]) {
-            			bat 'npx sonar-scanner -Dsonar.login=%SONAR_TOKEN% -Dsonar.host.url=http://localhost:9000 -Dsonar.qualitygate.wait=true'
-        }
+   		 environment {
+      			  SONAR_TOKEN = credentials('sonar-token-web')
+      			  SONAR_HOST_URL = 'http://localhost:9000'
+   			 }
+    			steps {
+        			bat 'npx sonar-scanner -Dsonar.qualitygate.wait=true'
     }
 }
 
