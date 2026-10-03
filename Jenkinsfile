@@ -42,7 +42,7 @@ pipeline {
         		SONAR_HOST_URL = 'http://localhost:9000'
     		}
     		steps {
-        		bat 'C:\\Windows\\System32\\config\\systemprofile\\.sonar\\native-sonar-scanner\\sonar-scanner-6.2.1.4610-windows-x64\\bin\\sonar-scanner.bat -Dsonar.login=%SONAR_TOKEN% -Dsonar.host.url=http://localhost:9000 -Dsonar.qualitygate.wait=true'
+        		bat "C:\\Windows\\System32\\config\\systemprofile\\.sonar\\native-sonar-scanner\\sonar-scanner-6.2.1.4610-windows-x64\\bin\\sonar-scanner.bat -Dsonar.login=${SONAR_TOKEN} -Dsonar.host.url=http://localhost:9000 -Dsonar.qualitygate.wait=true"
     }
 }
 
