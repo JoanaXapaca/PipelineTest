@@ -4,7 +4,7 @@ import { mount } from '@vue/test-utils'
 import App from '../App.vue'
 
 describe('E2E - Aplicação Vue', () => {
-  let wrapper: any
+  let wrapper: ReturnType<typeof mount>
 
   beforeAll(() => {
     wrapper = mount(App)
