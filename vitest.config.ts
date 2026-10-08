@@ -12,6 +12,7 @@ export default mergeConfig(
       coverage: {
         provider: 'istanbul',
   	include: ['src/**/*.{vue,ts,js}'],
+	exclude: ['scr/main.ts', 'scr/**/*.spec.ts'],
   	reporter: ['text', 'lcov'],
       },
     },
