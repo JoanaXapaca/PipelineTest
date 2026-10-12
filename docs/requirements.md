@@ -2,39 +2,33 @@ Requirements Specification
 
 
 
-Projeto: Pipeline Test (Vue)
+Project: Pipeline Test (Vue)
 
-Norma: ISO 13485:2016 - SOP 7.3.2
+Standard: ISO 13485:2016 - SOP 7.3.2
 
-Versão: 1.0
-
-
-
-1\. Requisitos Funcionais
-
-| ID | Requisito | Prioridade | Estado |
-
-|----|-----------|-----------|--------|
-
-| REQ-01 | O componente App.vue renderiza um heading principal | Alta | Implementado |
-
-| REQ-02 | O componente App.vue tem um contador que começa em 0 | Alta | Implementado |
-
-| REQ-03 | O botão de incremento aumenta o contador em 1 | Alta | Implementado |
-
-| REQ-04 | O botão de reset coloca o contador a 0 | Alta | Implementado |
+Version: 1.0
 
 
 
+1\. Functional Requirements
+
+| ID | Requirement | Priority | Status |
+
+| REQ-01 | The `App.vue` component renders a main heading | High | Implemented |
+
+| REQ-02 | The `App.vue` component has a counter that starts at 0 | High | Implemented |
+
+| REQ-03 | The increment button increases the counter by 1 | High | Implemented |
+
+| REQ-04 | The reset button sets the counter back to 0 | High | Implemented |
 
 
-2\. Requisitos Não Funcionais
 
-| ID | Requisito | Métrica | Estado |
+2\. Non-Functional Requirements
 
-|----|-----------|---------|--------|
+| ID | Requirement | Metric | Status |
 
-| NFR-01 | Cobertura de testes >= 80% | SonarQube | 95% |
+| NFR-01 | Test coverage >= 80% | SonarQube | 91.66% |
 
 | NFR-02 | Quality Gate Passed | SonarQube | OK |
 
@@ -42,57 +36,53 @@ Versão: 1.0
 
 | NFR-04 | 0 Vulnerabilities | SonarQube | OK |
 
-| NFR-05 | Tempo de pipeline < 5 min | Jenkins | \~1.5 min |
+| NFR-05 | Pipeline time < 5 min | Jenkins | OK |
 
-| NFR-06 | Lint sem erros | Oxlint + ESLint | 0 issues |
+| NFR-06 | Lint without errors | Oxlint + ESLint | 0 issues |
 
-| NFR-07 | Acessibilidade WCAG 2.1 AA | a validar E2E | Pendente |
-
-
-
-3\. Requisitos Regulamentares
-
-| ID | Requisito | Norma | Estado |
-
-|----|-----------|-------|--------|
-
-| REG-01 | Rastreabilidade de testes | ISO 13485 sec. 7.3.5 | OK |
-
-| REG-02 | Quality Gate obrigatório | FDA (SaMD) | OK |
-
-| REG-03 | Registos de auditoria | ISO 13485 sec. 4.2.5 | OK |
-
-| REG-04 | Controlo de versões | ISO 13485 sec. 4.2.4 | OK |
-
-| REG-05 | Análise estática | OWASP Top 10 | Parcial |
+| NFR-07 | Accessibility WCAG 2.1 AA | to validate in E2E | Pending |
 
 
 
-4\. Requisitos de Segurança
+3\. Regulatory Requirements
 
-Requisito | Categoria OWASP | Estado |
+| ID | Requirement | Standard | Status |
 
-\----------|----------------|--------|
+| REG-01 | Test traceability | ISO 13485 sec. 7.3.5 | OK |
 
-Sem injeções | A03 | Community não deteta |
+| REG-02 | Mandatory Quality Gate | FDA (SaMD) | OK |
 
-Sem credenciais hardcoded | A02 | OK |
+| REG-03 | Audit records | ISO 13485 sec. 4.2.5 | OK |
 
-Dependências atualizadas | A06 | Não verificado |
+| REG-04 | Version control | ISO 13485 sec. 4.2.4 | OK |
 
-
-
-5\. Fora do Âmbito
-
-Persistência de dados, comunicação em rede, autenticação de utilizadores.
+| REG-05 | Static analysis | OWASP Top 10 | Partial |
 
 
 
-6\. Referências
+4\. Security Requirements
 
-ISO 13485:2016 sec. 7.3.2
+| ID | Requirement | OWASP Category | Status |
 
-Quality Manual GlobeStar v01.47
+| SEC-01 | No injections | A03 | Community does not detect |
 
-OWASP Top 10 (2021)
+| SEC-02 | No hardcoded credentials | A02 | OK |
+
+| SEC-03 | Updated dependencies | A06 | 6 vulnerabilities in devDependencies |
+
+
+
+5\. Out of Scope
+
+Data persistence, network communication, user authentication.
+
+
+
+6\. References
+
+\- ISO 13485:2016 sec. 7.3.2
+
+\- Quality Manual GlobeStar v01.47
+
+\- OWASP Top 10 (2021)
 

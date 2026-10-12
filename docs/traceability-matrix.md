@@ -2,59 +2,49 @@ Traceability Matrix
 
 
 
-Projeto: Pipeline Test (Vue)
+Project: Pipeline Test (Vue)
 
-Norma: ISO 13485:2016 - SOP 7.3.2 + 7.3.5
-
-
-
-Matriz Requisito -> Teste
+Standard: ISO 13485:2016 — SOP 7.3.2 + 7.3.5
 
 
 
-| Requisito | Descrição | Teste | Ficheiro | Estado |
+Requirement -> Test Matrix
 
-|-----------|-----------|-------|----------|--------|
+| Requirement | Description | Test | File | Status |
 
-| REQ-01 | Heading principal renderiza | mounts renders properly | src/\_\_tests\_\_/App.spec.ts | OK |
+| REQ-01 | Main heading renders | mounts renders properly | src/\_\_tests\_\_/App.spec.ts | OK |
 
-| REQ-02 | Contador começa em 0 | starts with count 0 | src/\_\_tests\_\_/App.spec.ts | OK |
+| REQ-02 | Counter starts at 0 | starts with count 0 | src/\_\_tests\_\_/App.spec.ts | OK |
 
-| REQ-03 | Botão incrementa contador | increments count when button is clicked | src/\_\_tests\_\_/App.spec.ts | OK |
+| REQ-03 | Button increments counter | increments count when button is clicked | src/\_\_tests\_\_/App.spec.ts | OK |
 
-| REQ-04 | Botão reset reinicia contador | resets count to 0 | src/\_\_tests\_\_/App.spec.ts | OK |
+| REQ-04 | Reset button resets counter | resets count to 0 | src/\_\_tests\_\_/App.spec.ts | OK |
 
-| NFR-01 | Cobertura >= 80% | npm run test:unit | Pipeline | 91.66% |
+| NFR-01 | Coverage >= 80% | npm run test:unit | Pipeline | 91.66% |
 
 | NFR-02 | Quality Gate | SonarQube | Pipeline | OK |
 
-| REG-01 | Rastreabilidade | Relatório HTML | gerar\_relatorio.py | OK |
+| REG-01 | Traceability | HTML report | gerar\_relatorio.py | OK |
 
-| REG-03 | Registos de auditoria | archiveArtifacts | Jenkinsfile | OK |
-
-
-
-Testes E2E
+| REG-03 | Audit records | archiveArtifacts | Jenkinsfile | OK |
 
 
 
-| ID | Teste | Ficheiro | Estado |
+E2E Tests
 
-|----|-------|----------|--------|
+| ID | Test | File | Status |
 
-| E2E-01 | A aplicação monta sem erros | src/\_\_tests\_\_/e2e.spec.ts | OK |
+| E2E-01 | Application mounts without errors | src/\_\_tests\_\_/e2e.spec.ts | OK |
 
-| E2E-02 | Heading principal é renderizado | src/\_\_tests\_\_/e2e.spec.ts | OK |
+| E2E-02 | Main heading is rendered | src/\_\_tests\_\_/e2e.spec.ts | OK |
 
-| E2E-03 | Contador começa em 0 e incrementa | src/\_\_tests\_\_/e2e.spec.ts | OK |
-
-
-
-Referências
+| E2E-03 | Counter starts at 0 and increments | src/\_\_tests\_\_/e2e.spec.ts | OK |
 
 
 
-\- ISO 13485:2016 sec. 7.3.2 (Inputs) e sec. 7.3.5 (Verification)
+References
+
+\- ISO 13485:2016 sec. 7.3.2 (Inputs) and sec. 7.3.5 (Verification)
 
 \- Quality Manual GlobeStar v01.47
 

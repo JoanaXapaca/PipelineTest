@@ -2,45 +2,47 @@ Design Validation Plan
 
 
 
-Projeto: Pipeline Test (Vue)
+Project: Pipeline Test (Vue)
 
-Norma: ISO 13485:2016 - SOP 7.3.6
-
-
-
-1\. Objetivo
-
-Validar que o software cumpre os requisitos do utilizador em ambiente simulado.
+Standard: ISO 13485:2016 - SOP 7.3.6
 
 
 
-2\. Ambiente de Validação
+1\. Objective
 
-| Item | Descrição |
+Validate that the software meets user requirements in a simulated environment. The real clinical environment is out of scope.
+
+
+
+2\. Validation Environment
+
+| Item | Description |
+
+| Operating system | Windows 11 |
 
 | Runtime | Node.js 26.8.2 |
 
 | Framework | Vue 3.5 + TypeScript |
 
-| Utilizador | Desenvolvedor / QA |
+| User | Developer / QA |
 
-| Cenário | Execução dos testes E2E |
-
-
-
-3\. Testes E2E
-
-| ID | Teste | Cenário | Critério de Aceitação |
-
-| E2E-01 | Montagem | mount(App) | A aplicação monta sem erros |
-
-| E2E-02 | Renderização | wrapper.find('h1') | Heading renderiza com texto |
-
-| E2E-03 | Interação | button.trigger('click') | Contador incrementa |
+| Scenario | Run E2E tests |
 
 
 
-4\. Limitações
+3\. E2E Tests
 
-A validação em ambiente clínico real não é aplicável a este projeto de teste de pipeline. O produto real ConnexALL é validado no cliente.
+| ID | Test | Scenario | Acceptance Criterion |
+
+| E2E-01 | Mount | mount(App) | Application mounts without errors |
+
+| E2E-02 | Render | wrapper.find('h1') | Heading renders with text |
+
+| E2E-03 | Interaction | button.trigger('click') | Counter increments |
+
+
+
+4\. Limitations
+
+Validation in a real clinical environment is not applicable to this pipeline test project. The real product, ConnexALL, is validated at the customer site.
 

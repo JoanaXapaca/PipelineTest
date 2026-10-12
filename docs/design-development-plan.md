@@ -1,154 +1,144 @@
 Design and Development Plan
 
+Project: Pipeline Test (Vue)
 
+Standard: ISO 13485:2016 - SOP 7.3.1
 
-Projeto: Pipeline Test (Vue)
+Version: 1.0
 
-Norma: ISO 13485:2016 - SOP 7.3.1
-
-Versão: 1.0
-
-Autor: Joana Rego
-
-
-
-&#x20;1. Objetivo
-
-Este documento define o plano de design e desenvolvimento do projeto, incluindo etapas, responsabilidades, entradas e saídas de cada fase, conforme exigido pela ISO 13485:2016 secção 7.3.1.
+Author: Joana Rego
 
 
 
-2\. Ciclo de Vida
+1\. Objective
 
-O ciclo de vida segue o modelo IEC 62304, adaptado para o âmbito deste projeto.
-
-| Fase | Descrição | Responsável |
-
-|------|-----------|-------------|
-
-| 1. Planeamento | Definição de requisitos | Product Management |
-
-| 2. Design | Arquitetura e especificação | R\&D |
-
-| 3. Implementação | Codificação | R\&D |
-
-| 4. Verificação | Testes unitários e análise estática | R\&D + QA |
-
-| 5. Validação | Testes E2E e aceitação | QA |
-
-| 6. Release | Tag Git e publicação | R\&D |
-
-| 7. Manutenção | Suporte pós-release | Technical Support |
+This document defines the design and development plan for the project, including phases, responsibilities, inputs, and outputs of each phase, as required by ISO 13485:2016 section 7.3.1.
 
 
 
-3\. Etapas da Pipeline
+2\. Life Cycle
 
-| Stage | Ferramenta | Fase ISO |
+The life cycle follows the IEC 62304 model, adapted to the scope of this project.
 
-|-------|------------|----------|
 
-| Checkout | Git | Todas |
 
-| Install | npm install --legacy-peer-deps | Implementação |
+| Phase | Description | Responsible |
 
-| Lint | Oxlint + ESLint | Verificação |
+| 1. Planning | Requirements definition | Product Management |
 
-| Type-check | vue-tsc | Verificação |
+| 2. Design | Architecture and specification | R\&D |
 
-| Testes Unitários | Vitest + Istanbul | Verificação |
+| 3. Implementation | Coding | R\&D |
 
-| Testes E2E | Vitest | Verificação |
+| 4. Verification | Unit tests and static analysis | R\&D + QA |
 
-| SonarQube | SonarQube Community | Verificação |
+| 5. Validation | E2E tests and acceptance | QA |
+
+| 6. Release | Git tag and publication | R\&D |
+
+| 7. Maintenance | Post-release support | Technical Support |
+
+
+
+3\. Pipeline Stages
+
+| Stage | Tool | ISO Phase |
+
+| Checkout | Git | All |
+
+| Install | npm install --legacy-peer-deps | Implementation |
+
+| Lint | Oxlint + ESLint | Verification |
+
+| Type-check | vue-tsc | Verification |
+
+| Unit Tests | Vitest + Istanbul | Verification |
+
+| E2E Tests | Vitest | Verification |
+
+| SonarQube | SonarQube Community | Verification |
 
 | Build | Vite | Release |
 
-| Relatório Auditoria | Python | Todas |
+| Audit Report | Python | All |
 
 
 
-4\. Critérios de Entrada e Saída
+4\. Entry and Exit Criteria
 
-| Fase | Entrada | Saída | Critério |
+| Phase | Entry | Exit | Criterion |
 
-|------|---------|-------|----------|
+| Implementation | Approved requirement | Committed code | Git push |
 
-| Implementação | Requisito aprovado | Código commitado | Git push |
+| Verification | Committed code | Tests passed + Quality Gate | Coverage >= 80%, 0 Issues |
 
-| Verificação | Código commitado | Testes passados + Quality Gate | Cobertura >= 80%, 0 Issues |
+| Release | Verification passed | Dist + Git tag | Quality Gate Passed |
 
-| Release | Verificação passada | Dist + Tag Git | Quality Gate Passed |
-
-| Manutenção | Report de bug | Bug fix | Novo ciclo |
+| Maintenance | Bug report | Bug fix | New cycle |
 
 
 
-5\. Responsabilidades
+5\. Responsibilities
 
-| Papel | Responsabilidade |
+| Role | Responsibility |
 
-|-------|-----------------|
+| R\&D | Implementation, unit tests, bug fixes |
 
-| R\&D | Implementação, testes unitários, correção de bugs |
+| QA | Validation, E2E tests, Quality Gate review |
 
-| QA | Validação, testes E2E, revisão de Quality Gate |
+| Product Management | Requirements definition, release approval |
 
-| Product Management | Definição de requisitos, aprovação de release |
-
-| Management Representative | Aprovação final|
+| Management Representative | Final approval |
 
 
 
-6\. Ferramentas Utilizadas
+&#x20;6. Tools Used
 
-| Ferramenta | Versão | Propósito |
-
-|-----------|--------|-----------|
+| Tool | Version | Purpose |
 
 | Node.js | 26.8.2 | Runtime |
 
 | Vue | 3.5 | Framework |
 
-| TypeScript | 6.0 | Linguagem |
+| TypeScript | 6.0 | Language |
 
 | Vite | 8.3 | Build |
 
-| Vitest | 4.1 | Testes |
+| Vitest | 4.1 | Tests |
 
-| Istanbul | 4.1 | Cobertura |
+| Istanbul | 4.1 | Coverage |
 
-| Jenkins | LTS | Orquestração CI/CD |
+| Jenkins | LTS | CI/CD orchestration |
 
-| SonarQube | Community 26.9 | Análise estática |
+| SonarQube | Community 26.9 | Static analysis |
 
-| git | 2.55 | Controlo de versões |
+| SonarScanner CLI | 8.1.0.6389 | Scanner |
+
+| git | 2.55 | Version control |
 
 
 
-7\. Gestão de Interfaces
+7\. Interface Management
 
-| Interface | Responsável | Como |
+| Interface | Responsible | How |
 
-|-----------|-------------|------|
-
-| R\&D <-> QA | Ambos | Pull Requests + Jenkins |
+| R\&D <-> QA | Both | Pull Requests + Jenkins |
 
 | QA <-> Product | QA lead | Management Review |
 
-| Product <-> Cliente | Sales | Jira |
+| Product <-> Customer | Sales | Jira |
 
 
 
-8\. Atualização do Plano
+8\. Plan Updates
 
-Este plano é revisto no início de cada nova feature, após cada release major, ou quando há mudanças significativas no QMS.
+This plan is reviewed at the start of each new feature, after each major release, or when there are significant changes to the QMS.
 
 
 
-9\. Referências
+9\. References
 
-ISO 13485:2016, secção 7.3.1
+\- ISO 13485:2016, section 7.3.1
 
-Quality Manual GlobeStar v01.47
+\- Quality Manual GlobeStar v01.47
 

@@ -2,39 +2,39 @@ Design and Development File
 
 
 
-Norma: ISO 13485:2016 - SOP 7.3.10
+Standard: ISO 13485:2016 - SOP 7.3.10
 
 
 
-Conteúdo
+Contents
 
-| Documento | Localização | Propósito |
+| Document | Location | Purpose |
 
-| Design Plan | ../design-development-plan.md | Plano (7.3.1) |
+| Design Plan | ../design-development-plan.md | Plan (7.3.1) |
 
-| Requirements | ../requirements.md | Requisitos (7.3.2) |
+| Requirements | ../requirements.md | Requirements (7.3.2) |
 
-| Traceability Matrix | ../traceability-matrix.md | Rastreabilidade (7.3.2) |
+| Traceability Matrix | ../traceability-matrix.md | Traceability (7.3.2) |
 
-| QMS Software Validation | ../qms-software-validation.md | Validação software (4.1.6) |
+| QMS Software Validation | ../qms-software-validation.md | Software validation (4.1.6) |
 
-| Validation Plan | ../validation-plan.md | Validação (7.3.6) |
+| Validation Plan | ../validation-plan.md | Validation (7.3.6) |
 
-| Source Code | /src/App.vue | Implementação |
+| Source Code | /src/App.vue | Implementation |
 
-| Tests | /src/\_\_tests\_\_/App.spec.ts | Verificação (7.3.5) |
+| Unit Tests | /src/\_\_tests\_\_/App.spec.ts | Verification (7.3.5) |
 
-| E2E Tests | /src/\_\_tests\_\_/e2e.spec.ts | Validação (7.3.6) |
+| E2E Tests | /src/\_\_tests\_\_/e2e.spec.ts | Validation (7.3.6) |
 
-| Configuration | /sonar-project.properties | Análise estática |
+| Configuration | /sonar-project.properties | Static analysis |
 
-| Pipeline | /Jenkinsfile | Automação |
+| Pipeline | /Jenkinsfile | Automation |
 
-| Audit Report | /reports/auditoria.html | Registos |
+| Audit Report | /reports/auditoria.html | Records |
 
 
 
-Retenção
+Retention
 
-Mínimo 2 anos ou tempo de vida do dispositivo (SOP 4.2.5).
+Minimum 2 years or device lifetime (SOP 4.2.5).
 
