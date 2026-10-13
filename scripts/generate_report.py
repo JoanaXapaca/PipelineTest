@@ -327,4 +327,4 @@ if __name__ == '__main__':
         'jira_id': extract_jira_id(commit_message),
     }
 
-    generate_html(data, 'reports/auditoria.html')
+    generate_html(data, 'reports/report.html')
