@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
+// Counter state
 const count = ref(0)
 
+// Message that changes based on the counter value
 const message = computed(() => {
-  if (count.value === 0) return 'Comeca a contar'
-  if (count.value < 5) return 'Continua'
-  return 'Bom trabalho'
+  if (count.value === 0) return 'Start counting'
+  if (count.value < 5) return 'Keep going'
+  return 'Good job'
 })
 
+// Increment the counter by 1
 function increment() {
   count.value++
 }
 
+// Reset the counter back to 0
 function reset() {
   count.value = 0
 }

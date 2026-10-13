@@ -45,13 +45,13 @@ describe('App', () => {
 
   it('shows correct message for count 0', () => {
     const wrapper = mount(App)
-    expect(wrapper.find('[data-testid="message"]').text()).toBe('Comeca a contar')
+    expect(wrapper.find('[data-testid="message"]').text()).toBe('Start counting')
   })
 
   it('shows correct message for count 1', async () => {
     const wrapper = mount(App)
     await wrapper.find('[data-testid="increment"]').trigger('click')
-    expect(wrapper.find('[data-testid="message"]').text()).toBe('Continua')
+    expect(wrapper.find('[data-testid="message"]').text()).toBe('Keep going')
   })
 
   it('shows correct message for count 5', async () => {
@@ -60,6 +60,6 @@ describe('App', () => {
     for (let i = 0; i < 5; i++) {
       await button.trigger('click')
     }
-    expect(wrapper.find('[data-testid="message"]').text()).toBe('Bom trabalho')
+    expect(wrapper.find('[data-testid="message"]').text()).toBe('Good job')
   })
 })
