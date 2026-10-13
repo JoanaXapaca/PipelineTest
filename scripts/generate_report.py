@@ -179,7 +179,6 @@ def build_design_outputs_section(technology):
         rows = f"""
       <tr><td>Production build</td><td>dist/</td><td><code>{calculate_hash('dist/index.html')}</code></td></tr>
       <tr><td>Coverage file</td><td>coverage/lcov.info</td><td><code>{calculate_hash('coverage/lcov.info')}</code></td></tr>
-      <tr><td>HTML report</td><td>reports/report.html</td><td>N/A (in progress)</td></tr>
 """
     else:
         rows = '<tr><td colspan="3">Unknown technology</td></tr>'
