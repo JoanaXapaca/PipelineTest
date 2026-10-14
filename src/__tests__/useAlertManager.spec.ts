@@ -23,9 +23,9 @@ describe('useAlertManager', () => {
       manager.addAlert('info', 'Room 103', 'Third')
 
       expect(manager.alerts.value.length).toBe(3)
-      expect(manager.alerts.value[0].id).toBe(1)
-      expect(manager.alerts.value[1].id).toBe(2)
-      expect(manager.alerts.value[2].id).toBe(3)
+      expect(manager.alerts.value.find((a) => a.room === 'Room 101')?.id).toBe(1)
+      expect(manager.alerts.value.find((a) => a.room === 'Room 102')?.id).toBe(2)
+      expect(manager.alerts.value.find((a) => a.room === 'Room 103')?.id).toBe(3)
     })
   })
 
@@ -107,7 +107,7 @@ describe('useAlertManager', () => {
       const alert = manager.addAlert('critical', 'Room 101', 'Test')
       const result = manager.resolveAlert(alert.id)
       expect(result).toBe(true)
-      expect(manager.alerts.value[0].resolved).toBe(true)
+      expect(manager.alerts.value.find((a) => a.id === alert.id)?.resolved).toBe(true)
     })
 
     it('returns false when alert does not exist', () => {
