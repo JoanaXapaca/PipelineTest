@@ -53,8 +53,10 @@ export function useAlertManager() {
    */
   const highestPriorityAlert = computed<Alert | null>(() => {
     if (activeAlerts.value.length === 0) return null
-    return activeAlerts.value.reduce((highest, current) =>
-      ALERT_PRIORITY[current.type] > ALERT_PRIORITY[highest.type] ? current : highest
+    return activeAlerts.value.reduce(
+      (highest, current) =>
+        ALERT_PRIORITY[current.type] > ALERT_PRIORITY[highest.type] ? current : highest,
+      activeAlerts.value[0] as Alert
     )
   })
 

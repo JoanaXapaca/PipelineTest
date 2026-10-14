@@ -22,7 +22,7 @@ describe('useAlertManager', () => {
       manager.addAlert('warning', 'Room 102', 'Second')
       manager.addAlert('info', 'Room 103', 'Third')
 
-      expect(manager.alerts.value.length).toBe(3)
+      expect(manager.alerts.value).toHaveLength(3)
       expect(manager.alerts.value.find((a) => a.room === 'Room 101')?.id).toBe(1)
       expect(manager.alerts.value.find((a) => a.room === 'Room 102')?.id).toBe(2)
       expect(manager.alerts.value.find((a) => a.room === 'Room 103')?.id).toBe(3)
@@ -33,13 +33,13 @@ describe('useAlertManager', () => {
     it('counts active alerts correctly', () => {
       manager.addAlert('critical', 'Room 101', 'Alert 1')
       manager.addAlert('warning', 'Room 102', 'Alert 2')
-      expect(manager.activeAlerts.value.length).toBe(2)
+      expect(manager.activeAlerts.value).toHaveLength(2)
     })
 
     it('excludes resolved alerts from active count', () => {
       const alert = manager.addAlert('critical', 'Room 101', 'Alert 1')
       manager.resolveAlert(alert.id)
-      expect(manager.activeAlerts.value.length).toBe(0)
+      expect(manager.activeAlerts.value).toHaveLength(0)
     })
   })
 
@@ -121,7 +121,7 @@ describe('useAlertManager', () => {
       manager.addAlert('critical', 'Room 101', 'A')
       manager.addAlert('warning', 'Room 102', 'B')
       manager.clearAlerts()
-      expect(manager.alerts.value.length).toBe(0)
+      expect(manager.alerts.value).toHaveLength(0)
 
       const newAlert = manager.addAlert('info', 'Room 103', 'C')
       expect(newAlert.id).toBe(1)
