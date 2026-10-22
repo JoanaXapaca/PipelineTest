@@ -9,6 +9,9 @@ lint:
 type-check:
 	npm run type-check
 
+coverage:
+	npm run test:unit
+
 test:
 	npm run test:unit
 
