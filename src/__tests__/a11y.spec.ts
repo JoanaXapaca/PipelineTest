@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import * as axeCore from 'axe-core'
-import { AxeResults, RunOptions } from 'axe-core'
+import type { AxeResults, RunOptions } from 'axe-core'
 import App from '../App.vue'
 
 /**
