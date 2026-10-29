@@ -9,13 +9,15 @@ lint:
 type-check:
 	npm run type-check
 
-coverage:
-	npm run test:unit
-	.\\scripts\\fix-lcov.bat
-
 test:
 	npm run test:unit
 	.\\scripts\\fix-lcov.bat
+	type coverage\\lcov.info | findstr "SF:"
+
+coverage:
+	npm run test:unit
+	.\\scripts\\fix-lcov.bat
+	type coverage\\lcov.info | findstr "SF:"
 
 test-e2e:
 	npm run test:e2e
