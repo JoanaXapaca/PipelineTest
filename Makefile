@@ -10,11 +10,11 @@ type-check:
 	npm run type-check
 
 test:
-	npm run test:unit
+	set NODE_OPTIONS=--max-old-space-size=4096 && npm run test:unit
 	.\\scripts\\fix-lcov.bat
 
 coverage:
-	npm run test:unit
+	set NODE_OPTIONS=--max-old-space-size=4096 && npm run test:unit
 	.\\scripts\\fix-lcov.bat
 
 test-e2e:
