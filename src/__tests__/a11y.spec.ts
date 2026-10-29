@@ -2,14 +2,14 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import * as axeCore from 'axe-core'
+import { AxeResults, RunOptions } from 'axe-core'
 import App from '../App.vue'
 
 /**
- * Corre o axe-core sobre um elemento HTML e devolve as violações.
- * Usa a API Promise do axe-core (axe.run).
+ * Runs axe-core on an HTML element and returns the violations.
  */
-async function runAxe(element: Element, options: any = {}): Promise<any[]> {
-  const results = await (axeCore as any).run(element, options)
+async function runAxe(element: Element, options: RunOptions = {}): Promise<AxeResults['violations']> {
+  const results = await axeCore.run(element, options)
   return results.violations
 }
 
