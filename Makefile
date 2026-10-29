@@ -18,6 +18,9 @@ test:
 test-e2e:
 	npm run test:e2e
 
+a11y:
+	npm run test:unit -- src/__tests__/a11y.spec.ts
+
 build:
 	npm run build
 
