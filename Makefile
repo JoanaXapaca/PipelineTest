@@ -11,11 +11,11 @@ type-check:
 
 coverage:
 	npm run test:unit
-	powershell -Command "(Get-Content coverage/lcov.info) -replace '\\\\', '/' | Set-Content coverage/lcov.info"
+	.\\scripts\\fix-lcov.bat
 
 test:
 	npm run test:unit
-	powershell -Command "(Get-Content coverage/lcov.info) -replace '\\\\', '/' | Set-Content coverage/lcov.info"
+	.\\scripts\\fix-lcov.bat
 
 test-e2e:
 	npm run test:e2e
