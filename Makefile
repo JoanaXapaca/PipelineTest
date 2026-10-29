@@ -10,11 +10,9 @@ type-check:
 	npm run type-check
 
 test:
-	npx vitest --run --coverage --no-cache
 	.\\scripts\\fix-lcov.bat
 
 coverage:
-	npx vitest --run --coverage --no-cache
 	.\\scripts\\fix-lcov.bat
 
 test-e2e:
