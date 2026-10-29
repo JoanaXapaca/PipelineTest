@@ -23,6 +23,8 @@ export default mergeConfig(
         exclude: ['src/main.ts', 'src/**/*.spec.ts'],
         // Generate text output and lcov report (for SonarQube)
         reporter: ['text', 'lcov'],
+        // Ensure the lcov.info is written to the correct path
+        reportsDirectory: './coverage',
       },
     },
   }),
