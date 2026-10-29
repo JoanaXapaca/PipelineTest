@@ -11,11 +11,9 @@ type-check:
 
 coverage:
 	npm run test:unit
-	.\\scripts\\fix-lcov.bat
 
 test:
 	npm run test:unit
-	.\\scripts\\fix-lcov.bat
 
 test-e2e:
 	npm run test:e2e
