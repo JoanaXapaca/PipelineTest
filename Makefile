@@ -10,11 +10,11 @@ type-check:
 	npm run type-check
 
 test:
-	npx vitest --run --coverage --environment node
+	npm run test:unit
 	.\\scripts\\fix-lcov.bat
 
 coverage:
-	npx vitest --run --coverage --environment node
+	npm run test:unit
 	.\\scripts\\fix-lcov.bat
 
 test-e2e:
