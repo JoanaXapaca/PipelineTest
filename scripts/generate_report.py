@@ -291,7 +291,7 @@ def generate_html(data, output_file):
       <tr><td>ISO 13485 sec. 7.3</td><td>Design and Development File</td><td class="ok">Documented</td></tr>
       <tr><td>FDA (SaMD)</td><td>Quality Gate required before build</td><td class="ok">Applied</td></tr>
       <tr><td>HIPAA</td><td>Access control via VPN + credentials</td><td class="ok">Applied</td></tr>
-      <tr><td>WCAG 2.1 AA</td><td>Accessibility (to be validated in E2E)</td><td class="warn">Pending</td></tr>
+      <tr><td>WCAG 2.1 AA</td><td>Accessibility (validated by axe-core)</td><td class="ok">Applied</td></tr>
       <tr><td>OWASP Top 10</td><td>Partial static analysis via SonarQube Community</td><td class="warn">Partial</td></tr>
     </table>
 
