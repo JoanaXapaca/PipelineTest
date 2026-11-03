@@ -35,5 +35,3 @@ function reset() {
     <button data-testid="reset" @click="reset">Reset</button>
   </div>
 </template>
-
-<style scoped></style>
