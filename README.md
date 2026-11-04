@@ -12,9 +12,10 @@ Runs on Jenkins, with the following stages:
 4. Type-check — `npm run type-check` (vue-tsc)
 5. Unit Tests — `npm run test:unit` (Vitest + Istanbul)
 6. E2E Tests — `npm run test:e2e`
-7. SonarQube — `sonar-scanner -Dsonar.qualitygate.wait=true`
-8. Build — `npm run build` (Vite)
-9. Audit Report — `python scripts/gerar_relatorio.py`
+7. Acessibility — `npm run test:unit -- scr/__tests__/a11y.spec.ts` (Vitest + axe-core)
+8. SonarQube — `sonar-scanner -Dsonar.qualitygate.wait=true`
+9. Build — `npm run build` (Vite)
+10. Audit Report — `python scripts/gerar_relatorio.py`
 
 Trigger: Poll SCM every 5 minutes. Every push to the `main` branch triggers the pipeline.
 
@@ -46,19 +47,13 @@ npm run build
 
 Interpreting results
 Jenkins:
-
 Green: pipeline passed
-
 Red: some stage failed; check Console Output
-
 Artifacts: dist/ and reports/ archived on each build
 
 SonarQube:
-
 Dashboard: http://localhost:9000/dashboard?id=pipeline-test
-
 Quality Gate must be Passed
-
 Coverage is read from coverage/lcov.info
 
 Stack
@@ -67,6 +62,7 @@ Framework	Vue 3
 Language	TypeScript
 Build	Vite
 Tests	Vitest + Istanbul
+Accessiblity Vitest + axe-core 
 Lint	Oxlint + ESLint
 Type-check	vue-tsc
 CI/CD	Jenkins
@@ -80,13 +76,16 @@ pipeline-test/
 ├── vitest.config.ts
 ├── package.json
 ├── scripts/
-│   └── gerar_relatorio.py
+│   ├── generate_report.py
+│   └── fix-lcov.bat
 ├── src/
 │   ├── App.vue
 │   ├── main.ts
 │   └── __tests__/
 │       ├── App.spec.ts
-│       └── e2e.spec.ts
+│       ├── e2e.spec.ts
+│       ├── useAlertManager.spec.ts
+│       └── a11y.spec.ts
 ├── docs/
 │   ├── design-development-plan.md
 │   ├── requirements.md
@@ -101,11 +100,8 @@ pipeline-test/
 
 Notes
 --legacy-peer-deps is needed because of a conflict between oxlint and eslint-plugin-oxlint.
-
 Coverage provider is Istanbul (v8 has a known bug with Vue files reporting 0%).
-
 SonarQube runs on http://127.0.0.1:9000 (IPv4, to avoid WSL relay conflicts on Windows).
-
 The Sonar token is read from C:\Users\jrego\sonar-token.txt.
-
 Quality Gate is enforced with sonar.qualitygate.wait=true (no webhook needed in localhost).
+Accessibility tests use axe-core to validate WCAG 2.1 AA compliance (contrast, ARIA, headings).
