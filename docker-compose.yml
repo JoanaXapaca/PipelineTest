@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ../go-backend-test
+    ports:
+      - "8081:8080"
+    networks:
+      - pipeline-net
+
+  frontend:
+    build: .
+    ports:
+      - "3000:80"
+    networks:
+      - pipeline-net
+    depends_on:
+      - backend
+
+networks:
+  pipeline-net:
+    driver: bridge
