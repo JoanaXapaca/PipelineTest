@@ -5,7 +5,7 @@ import subprocess
 
 def test_communication():
     print("A iniciar containers...")
-    subprocess.run(["docker-compose", "up", "-d", "--build"], check=True)
+    subprocess.run([r"C:\Program Files\Docker\Docker\resources\bin\docker-compose.exe", "up", "-d", "--build"], check=True)
     
     print("A aguardar que os servicos arranquem...")
     time.sleep(10) # Dá tempo para o Go e o Nginx arrancarem
@@ -34,7 +34,7 @@ def test_communication():
         sys.exit(1)
     finally:
         print("A desligar containers...")
-        subprocess.run(["docker-compose", "down"], check=True)
+        subprocess.run([r"C:\Program Files\Docker\Docker\resources\bin\docker-compose.exe", "down"], check=True)
 
 if __name__ == "__main__":
     test_communication()
