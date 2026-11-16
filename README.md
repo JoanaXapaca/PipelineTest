@@ -56,6 +56,11 @@ Dashboard: http://localhost:9000/dashboard?id=pipeline-test
 Quality Gate must be Passed
 Coverage is read from coverage/lcov.info
 
+Container Integration Test:
+The pipeline includes a full container integration test. It uses Docker to build the frontend (Nginx) and backend (Go) images, spin them up in a private network, and verify communication.
+
+`make test-integration` - Clones the Go repo, runs `docker-compose up`, tests Host-to-Container and Container-to-Container (Frontend -> Backend) communication via HTTP.
+
 Stack
 Layer	Technology
 Framework	Vue 3
@@ -67,6 +72,7 @@ Lint	Oxlint + ESLint
 Type-check	vue-tsc
 CI/CD	Jenkins
 Static analysis	SonarQube
+Container Docker (Multi-stage builds)
 
 Structure:
 pipeline-test/
@@ -94,6 +100,14 @@ pipeline-test/
 │   ├── validation-plan.md
 │   └── design-file/
 │       └── README.md
+├── docker-compose.yml
+├── Dockerfile
+├── nginx.conf
+├── scripts/
+│   ├── generate_report.py
+│   ├── test_integration.py
+│   └── fix-lcov.bat
+|
 ├── coverage/    (generated)
 ├── dist/        (generated)
 └── reports/     (generated)
