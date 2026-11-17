@@ -54,6 +54,7 @@ def test_communication():
         print("Shutting down containers...")
         subprocess.run([DOCKER_COMPOSE, "down"], check=True)
         subprocess.run(["rmdir", "/s", "/q", "go-backend-test"], shell=True, check=False)
+	# Test updated for container-to-container communication
 
 if __name__ == "__main__":
     test_communication()
