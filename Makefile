@@ -1,4 +1,4 @@
-﻿.PHONY: install lint type-check test test-e2e build sonar clean
+﻿.PHONY: install lint type-check test test-e2e coverage a11y build docker-build sonar test-integration clean
 
 install:
 	npm install --legacy-peer-deps
@@ -23,6 +23,9 @@ a11y:
 
 build:
 	npm run build
+
+docker-build:
+	C:\\Users\\jrego\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker-compose.exe build
 
 test-integration:
 	"C:/Users/jrego/AppData/Local/Python/pythoncore-3.14-64/python.exe" scripts/test_integration.py
