@@ -25,6 +25,7 @@ build:
 	npm run build
 
 docker-build:
+	.\\scripts\\clone-go.bat
 	C:\\Users\\jrego\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker-compose.exe build
 
 test-integration:
