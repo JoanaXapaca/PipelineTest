@@ -6,6 +6,9 @@ install:
 lint:
 	npm run lint
 
+audit:
+	npm audit --audit-level=high
+
 type-check:
 	npm run type-check
 
