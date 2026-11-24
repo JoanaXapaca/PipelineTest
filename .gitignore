@@ -39,5 +39,3 @@ __screenshots__/
 *.timestamp-*-*.mjs
 reports/ 
 unit 
-
-go-backend-test/
