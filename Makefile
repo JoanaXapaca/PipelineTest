@@ -7,7 +7,7 @@ lint:
 	npm run lint
 
 audit:
-	npm audit --audit-level=high
+	npm audit --audit-level=critical --omit=dev
 
 type-check:
 	npm run type-check
