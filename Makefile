@@ -1,4 +1,4 @@
-﻿.PHONY: install lint type-check test test-e2e build sonar clean
+﻿.PHONY: install lint type-check test test-e2e coverage a11y build sonar clean
 
 install:
 	npm install --legacy-peer-deps
@@ -6,20 +6,19 @@ install:
 lint:
 	npm run lint
 
-audit:
-	npm audit --audit-level=critical --omit=dev
-
 type-check:
 	npm run type-check
 
 test:
 	npm run test:unit
-
-coverage:
-	npm run test:unit
+	.\\scripts\\fix-lcov.bat
 
 test-e2e:
 	npm run test:e2e
+
+coverage:
+	npm run test:unit
+	.\\scripts\\fix-lcov.bat
 
 a11y:
 	npx vitest run src/__tests__/a11y.spec.ts
@@ -31,4 +30,4 @@ sonar:
 	C:\\SonarScanner-8.1.0\\sonar-scanner-8.1.0.6389-windows-x64\\bin\\sonar-scanner.bat -Dsonar.token=%SONAR_TOKEN% -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.qualitygate.wait=true
 
 clean:
-	rm -rf node_modules dist coverage reports .scannerwork
+	rm -rf node_modules dist coverage reports
